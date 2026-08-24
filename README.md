@@ -56,23 +56,49 @@ licensehead ./src
 
 ## CLI reference
 
-Synopsis:
-
 ```text
-licensehead [options] [dir]
-```
+licensehead 1.00 (1.0.0)
 
-| Flag / argument | Meaning |
-| --- | --- |
-| `-h, --help` | Print detailed usage and exit 0. |
-| `-v, --version` | Print 1.0.0 and exit 0. |
-| `[dir]` | Root to walk. Default: cwd. Skips node_modules, .git, dist, coverage. Extensions: .js .ts .mjs .cjs |
+Usage:
+  licensehead [scan] [options] [dir]
+  licensehead fix [options] [dir]
+
+Walk .js / .ts / .mjs / .cjs files and require:
+  SPDX-License-Identifier: <id>
+
+Subcommands:
+  scan               List files missing an SPDX header (default)
+  fix                Prepend a standard MIT SPDX line to missing files
+
+Options:
+  -h, --help         Show this help and exit 0
+  -V, -v, --version  Print 1.0.0 and exit 0
+  --json             JSON {ok, scanned, missing|fixed}
+  --include <glob>   Only files matching this glob (repeatable)
+  --exclude <glob>   Skip files matching this glob (repeatable)
+  --fix              Same as the fix subcommand
+
+The inserted header is:
+  // SPDX-License-Identifier: MIT
+
+Exit codes:
+  0  every scanned file has SPDX (or fix succeeded)
+  1  one or more files missing SPDX (scan), or bad input
+
+Examples:
+  licensehead
+  licensehead ./src
+  licensehead --include "src/**/*.js" --exclude "**/*.test.js"
+  licensehead fix --json
+```
 
 Print the same text locally:
 
 ```bash
 licensehead --help
+licensehead -h
 licensehead --version
+licensehead -V
 ```
 
 Expected version output:
@@ -83,38 +109,40 @@ Expected version output:
 
 ## Configuration
 
-A file passes if it matches /SPDX-License-Identifier:\s*\S+/. Placement in a comment is up to you; the scanner does not parse JS.
+Walks `.js`, `.ts`, `.mjs`, `.cjs`. `--fix` prepends `// SPDX-License-Identifier: MIT`.
 
 ## Exit codes
 
 | Code | Meaning |
 | --- | --- |
-| `0` | Every scanned file has an SPDX identifier. |
-| `1` | One or more files are missing SPDX. |
+| `0` | Every scanned file has SPDX, or fix succeeded. |
+| `1` | One or more files missing SPDX (scan), or bad input. |
 
 ## Examples
 
 ### Success path
 
-All files include a header.
+Every scanned JS/TS file has an SPDX header.
 
 ```bash
-licensehead ./src
+licensehead --json ./src
 ```
 
-```json
-{"ok":true,"scanned":4,"missing":0}
+```text
+{"ok":true,"scanned":3,"missing":[]}
 ```
 
 ### Failure path
+
+Files without SPDX are listed and exit 1.
 
 ```bash
 licensehead ./src
 ```
 
 ```text
-missing src/legacy.ts
-{"ok":false,"scanned":5,"missing":1}
+missing bad.ts
+scanned 2, missing 1
 ```
 
 Exit code is 1.

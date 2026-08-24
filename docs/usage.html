@@ -30,28 +30,60 @@
   <div class="wrap">
     <section>
       <h2>Synopsis</h2>
-      <pre><code>licensehead [options] [dir]</code></pre>
-      <div class="callout sans"><strong>Tip:</strong> <code>licensehead --help</code> prints this text in the terminal. <code>licensehead --version</code> prints <code>1.0.0</code>.</div>
+      <pre><code>licensehead 1.00 (1.0.0)
+
+Usage:
+  licensehead [scan] [options] [dir]
+  licensehead fix [options] [dir]
+
+Walk .js / .ts / .mjs / .cjs files and require:
+  SPDX-License-Identifier: &lt;id&gt;
+
+Subcommands:
+  scan               List files missing an SPDX header (default)
+  fix                Prepend a standard MIT SPDX line to missing files
+
+Options:
+  -h, --help         Show this help and exit 0
+  -V, -v, --version  Print 1.0.0 and exit 0
+  --json             JSON {ok, scanned, missing|fixed}
+  --include &lt;glob&gt;   Only files matching this glob (repeatable)
+  --exclude &lt;glob&gt;   Skip files matching this glob (repeatable)
+  --fix              Same as the fix subcommand
+
+The inserted header is:
+  // SPDX-License-Identifier: MIT
+
+Exit codes:
+  0  every scanned file has SPDX (or fix succeeded)
+  1  one or more files missing SPDX (scan), or bad input
+
+Examples:
+  licensehead
+  licensehead ./src
+  licensehead --include "src/**/*.js" --exclude "**/*.test.js"
+  licensehead fix --json</code></pre>
+      <div class="callout sans"><strong>Tip:</strong> <code>licensehead --help</code> and <code>-h</code> print this text. <code>licensehead --version</code> and <code>-V</code> print <code>1.0.0</code>.</div>
     </section>
     <section>
       <h2>Flags and arguments</h2>
-      <table class="sans"><thead><tr><th>Flag / argument</th><th>Meaning</th></tr></thead><tbody><tr><td><code>-h, --help</code></td><td>Print detailed usage and exit 0.</td></tr><tr><td><code>-v, --version</code></td><td>Print 1.0.0 and exit 0.</td></tr><tr><td><code>[dir]</code></td><td>Root to walk. Default: cwd. Skips node_modules, .git, dist, coverage. Extensions: .js .ts .mjs .cjs</td></tr></tbody></table>
+      <p>The complete flag list is in <code>licensehead --help</code> (shown above). Human output is the default; pass <code>--json</code> where supported.</p>
     </section>
     <section>
       <h2>Exit codes</h2>
-      <table class="sans"><thead><tr><th>Code</th><th>Meaning</th></tr></thead><tbody><tr><td><code>0</code></td><td>Every scanned file has an SPDX identifier.</td></tr><tr><td><code>1</code></td><td>One or more files are missing SPDX.</td></tr></tbody></table>
+      <table class="sans"><thead><tr><th>Code</th><th>Meaning</th></tr></thead><tbody><tr><td><code>0</code></td><td>Every scanned file has SPDX, or fix succeeded.</td></tr><tr><td><code>1</code></td><td>One or more files missing SPDX (scan), or bad input.</td></tr></tbody></table>
     </section>
     <section>
       <h2>Configuration</h2>
-      <p>A file passes if it matches /SPDX-License-Identifier:\s*\S+/. Placement in a comment is up to you; the scanner does not parse JS.</p>
+      <p>Walks `.js`, `.ts`, `.mjs`, `.cjs`. `--fix` prepends `// SPDX-License-Identifier: MIT`.</p>
     </section>
     <section id="examples">
       <h2>Worked examples</h2>
       <h3 class="ok">Success path</h3>
-      <p>All files include a header.</p><pre><code>licensehead ./src</code></pre><pre><code>{"ok":true,"scanned":4,"missing":0}</code></pre>
+      <p>Every scanned JS/TS file has an SPDX header.</p><pre><code>licensehead --json ./src</code></pre><pre><code>{"ok":true,"scanned":3,"missing":[]}</code></pre>
       <h3 class="fail">Failure path</h3>
-      <pre><code>licensehead ./src</code></pre><pre><code>missing src/legacy.ts
-{"ok":false,"scanned":5,"missing":1}</code></pre><p>Exit code is 1.</p>
+      <p>Files without SPDX are listed and exit 1.</p><pre><code>licensehead ./src</code></pre><pre><code>missing bad.ts
+scanned 2, missing 1</code></pre><p>Exit code is 1.</p>
     </section>
   </div>
   <footer class="sans">
