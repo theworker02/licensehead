@@ -1,9 +1,9 @@
 {
-  "name": "licensehead",
+  "name": "@magnexis/licensehead",
   "version": "1.0.0",
   "description": "Scan .js/.ts files for SPDX-License-Identifier and list the ones that are missing it.",
   "bin": {
-    "licensehead": "./src/cli.js"
+    "licensehead": "src/cli.js"
   },
   "main": "./src/index.js",
   "scripts": {
@@ -32,5 +32,8 @@
     "license",
     "header",
     "cli"
-  ]
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
 }
