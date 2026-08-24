@@ -1,6 +1,6 @@
 # licensehead
 
-<img src="docs/logo.svg" alt="licensehead mark" width="88" height="88">
+<img src="docs/logo.svg" alt="licensehead mark" width="96" height="96">
 
 **Scan .js/.ts files for SPDX-License-Identifier and list the ones that are missing it.**
 
@@ -11,6 +11,8 @@
 ![release 1.00](https://img.shields.io/github/v/release/theworker02/licensehead?display_name=release)
 
 Package version **1.00** (`1.0.0`). Default branch is **`main`** — never `master`.
+
+**Docs:** [GitHub Pages](https://theworker02.github.io/licensehead/) · **Source:** [`theworker02/licensehead`](https://github.com/theworker02/licensehead) · **Release 1.00:** [`v1.0.0`](https://github.com/theworker02/licensehead/releases/tag/v1.0.0)
 
 ## Why it exists
 
