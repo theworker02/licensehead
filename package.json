@@ -1,7 +1,7 @@
 {
   "name": "licensehead",
   "version": "1.0.0",
-  "description": "Scan .js/.ts files for SPDX-License-Identifier headers.",
+  "description": "Scan .js/.ts files for SPDX-License-Identifier and list the ones that are missing it.",
   "bin": {
     "licensehead": "./src/cli.js"
   },
@@ -12,5 +12,25 @@
   "license": "MIT",
   "engines": {
     "node": ">=18"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/theworker02/licensehead.git"
+  },
+  "homepage": "https://theworker02.github.io/licensehead/",
+  "bugs": {
+    "url": "https://github.com/theworker02/licensehead/issues"
+  },
+  "files": [
+    "src",
+    "docs",
+    "LICENSE",
+    "README.md"
+  ],
+  "keywords": [
+    "spdx",
+    "license",
+    "header",
+    "cli"
+  ]
 }
