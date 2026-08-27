@@ -1,39 +1,16 @@
 {
-  "name": "@magnexis/licensehead",
-  "version": "1.0.0",
-  "description": "Scan .js/.ts files for SPDX-License-Identifier and list the ones that are missing it.",
-  "bin": {
-    "licensehead": "src/cli.js"
-  },
+  "name": "@theworker02/licensehead",
+  "version": "1.1.0",
+  "private": true,
+  "description": "Scan JavaScript and TypeScript source trees for SPDX license headers and optionally fix them.",
+  "bin": { "licensehead": "src/cli.js" },
   "main": "./src/index.js",
-  "scripts": {
-    "test": "node --test"
-  },
+  "scripts": { "test": "node --test" },
   "license": "MIT",
-  "engines": {
-    "node": ">=18"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/theworker02/licensehead.git"
-  },
+  "engines": { "node": ">=18" },
+  "repository": { "type": "git", "url": "https://github.com/theworker02/licensehead.git" },
   "homepage": "https://theworker02.github.io/licensehead/",
-  "bugs": {
-    "url": "https://github.com/theworker02/licensehead/issues"
-  },
-  "files": [
-    "src",
-    "docs",
-    "LICENSE",
-    "README.md"
-  ],
-  "keywords": [
-    "spdx",
-    "license",
-    "header",
-    "cli"
-  ],
-  "publishConfig": {
-    "access": "public"
-  }
+  "bugs": { "url": "https://github.com/theworker02/licensehead/issues" },
+  "files": ["src", "docs", "LICENSE", "README.md"],
+  "keywords": ["spdx", "license", "header", "compliance", "jsr"]
 }
