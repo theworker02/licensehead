@@ -16,7 +16,7 @@ This project is **proprietary**. Production use, redistribution, and commercial 
 ![version 1.1.0](https://img.shields.io/badge/version-1.1.0-C9A227?labelColor=0B1F33)
 ![license MIT](https://img.shields.io/badge/license-MIT-0B1F33)
 
-**Package:** [`@theworker02/licensehead`](https://jsr.io/@theworker02/licensehead) Â· **Site:** [GitHub Pages](https://theworker02.github.io/licensehead/) Â· **Source:** [`theworker02/licensehead`](https://github.com/theworker02/licensehead)
+**Package:** [`@theworker02/licensehead`](https://jsr.io/@theworker02/licensehead) Ã‚Â· **Site:** [GitHub Pages](https://theworker02.github.io/licensehead/) Ã‚Â· **Source:** [`theworker02/licensehead`](https://github.com/theworker02/licensehead)
 
 ## Add from JSR
 
@@ -34,13 +34,13 @@ console.log(SPDX_LINE);
 
 ## Public API
 
-- `scan(root, options)` â€” find source files missing SPDX identifiers.
-- `fix(root, options)` â€” prepend the canonical MIT SPDX line.
-- `hasSpdx(text)` â€” inspect source text.
-- `walk(dir)` â€” enumerate supported source files.
-- `matchGlob(path, pattern)` â€” include/exclude matching.
-- `SPDX_LINE`, `SOURCE_EXTENSIONS`, `SKIP_DIRS`, `PACKAGE` â€” documented metadata.
-- `ScanOptions`, `ScanResult`, `FixResult` â€” TypeScript interfaces.
+- `scan(root, options)` Ã¢â‚¬â€ find source files missing SPDX identifiers.
+- `fix(root, options)` Ã¢â‚¬â€ prepend the canonical MIT SPDX line.
+- `hasSpdx(text)` Ã¢â‚¬â€ inspect source text.
+- `walk(dir)` Ã¢â‚¬â€ enumerate supported source files.
+- `matchGlob(path, pattern)` Ã¢â‚¬â€ include/exclude matching.
+- `SPDX_LINE`, `SOURCE_EXTENSIONS`, `SKIP_DIRS`, `PACKAGE` Ã¢â‚¬â€ documented metadata.
+- `ScanOptions`, `ScanResult`, `FixResult` Ã¢â‚¬â€ TypeScript interfaces.
 
 ## CLI from source
 
@@ -62,4 +62,8 @@ The canonical public package is JSR `@theworker02/licensehead`, published throug
 
 ## License
 
-[MIT](LICENSE) Â© 2026 theworker02
+[MIT](LICENSE) Ã‚Â© 2026 theworker02
+
+## Status
+
+licensehead is actively packaged for commercial licensing and acquisition diligence. See [ACQUISITION.md](./ACQUISITION.md) and [docs/acquisition/](./docs/acquisition/).
